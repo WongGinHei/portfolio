@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="595.28px" height="841.89px" viewBox="0 0 595.28 841.89" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="595.28" height="841.89" fill="#F8F6F3"/>
+  
+  <!-- 右侧蓝色波浪装饰区域 -->
+  <path d="M 380 0 
+           Q 450 100, 380 200 
+           Q 320 280, 380 360
+           Q 450 450, 380 550
+           Q 320 650, 380 750
+           Q 420 800, 450 841.89
+           L 595.28 841.89
+           L 595.28 0
+           Z" fill="#3B5A8C"/>
+  
+  <!-- 右上角信息区域 -->
+  <text x="480" y="50" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#FFFFFF" text-anchor="middle">出生年月：</text>
+  <text x="480" y="65" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#FFFFFF" text-anchor="middle">[您的出生年月]</text>
+  
+  <text x="480" y="90" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#FFFFFF" text-anchor="middle">作品网站：</text>
+  <text x="480" y="105" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#FFFFFF" text-anchor="middle">[您的网站]</text>
+  
+  <text x="480" y="130" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#FFFFFF" text-anchor="middle">联系电话：</text>
+  <text x="480" y="145" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#FFFFFF" text-anchor="middle">[您的电话]</text>
+  
+  <text x="480" y="170" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#FFFFFF" text-anchor="middle">邮件地址：</text>
+  <text x="480" y="185" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#FFFFFF" text-anchor="middle">[您的邮箱]</text>
+  
+  <!-- RESUME标题 -->
+  <text x="435" y="260" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="28" fill="#3B5A8C" font-weight="bold" letter-spacing="3">RESUME</text>
+  
+  <!-- 头像圆形区域（示意位置） -->
+  <circle cx="320" cy="180" r="65" fill="#E8E4DF" stroke="#CCCCCC" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="320" y="185" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#999999" text-anchor="middle">[放置头像]</text>
+  
+  <!-- 左侧区域 - 自我评价 -->
+  <text x="50" y="280" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="16" fill="#333333" font-weight="bold">自我评价</text>
+  <text x="130" y="280" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#666666">About me</text>
+  <line x1="50" y1="290" x2="220" y2="290" stroke="#3B5A8C" stroke-width="2"/>
+  
+  <text x="50" y="315" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#333333">
+    <tspan x="50" dy="0">[在此输入您的自我评价内容]</tspan>
+    <tspan x="50" dy="16">您好！我叫王健希，本人追求上</tspan>
+    <tspan x="50" dy="16">进，不断接受新的设计理念，</tspan>
+    <tspan x="50" dy="16">研究各种设计风格。在新媒体</tspan>
+    <tspan x="50" dy="16">、视觉艺术方面有独特的创造</tspan>
+    <tspan x="50" dy="16">性，对于潮流趋势、时尚领域</tspan>
+    <tspan x="50" dy="16">有一定敏感度，有独立完成项</tspan>
+    <tspan x="50" dy="16">目的经验。对待工作认真踏实</tspan>
+    <tspan x="50" dy="16">，尽职尽责。</tspan>
+    <tspan x="50" dy="16">我期待着能成为贵公司的一员！</tspan>
+  </text>
+  
+  <!-- 左侧区域 - 合作项目 -->
+  <text x="50" y="520" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="16" fill="#333333" font-weight="bold">合作项目</text>
+  <text x="130" y="520" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#666666">Projects</text>
+  <line x1="50" y1="530" x2="220" y2="530" stroke="#3B5A8C" stroke-width="2"/>
+  
+  <text x="50" y="550" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#333333">
+    <tspan x="50" dy="0">● [项目一描述]</tspan>
+    <tspan x="50" dy="16">● [项目二描述]</tspan>
+    <tspan x="50" dy="16">● [项目三描述]</tspan>
+    <tspan x="50" dy="16">● [项目四描述]</tspan>
+    <tspan x="50" dy="16">● [项目五描述]</tspan>
+  </text>
+  
+  <!-- 左侧区域 - 技能软件 -->
+  <text x="50" y="670" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="16" fill="#333333" font-weight="bold">技能软件</text>
+  <text x="130" y="670" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#666666">Skills</text>
+  <line x1="50" y1="680" x2="220" y2="680" stroke="#3B5A8C" stroke-width="2"/>
+  
+  <!-- 技能列表 -->
+  <text x="50" y="705" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="11" fill="#333333">Photoshop</text>
+  <circle cx="150" cy="702" r="4" fill="#3B5A8C"/>
+  <circle cx="162" cy="702" r="4" fill="#3B5A8C"/>
+  <circle cx="174" cy="702" r="4" fill="#3B5A8C"/>
+  <circle cx="186" cy="702" r="4" fill="#3B5A8C"/>
+  <circle cx="198" cy="702" r="4" fill="#3B5A8C"/>
+  <circle cx="210" cy="702" r="4" fill="#CCCCCC"/>
+  
+  <text x="50" y="725" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="11" fill="#333333">Illustrator</text>
+  <circle cx="150" cy="722" r="4" fill="#3B5A8C"/>
+  <circle cx="162" cy="722" r="4" fill="#3B5A8C"/>
+  <circle cx="174" cy="722" r="4" fill="#3B5A8C"/>
+  <circle cx="186" cy="722" r="4" fill="#3B5A8C"/>
+  <circle cx="198" cy="722" r="4" fill="#CCCCCC"/>
+  <circle cx="210" cy="722" r="4" fill="#CCCCCC"/>
+  
+  <text x="50" y="745" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="11" fill="#333333">CorelDRAW</text>
+  <circle cx="150" cy="742" r="4" fill="#3B5A8C"/>
+  <circle cx="162" cy="742" r="4" fill="#3B5A8C"/>
+  <circle cx="174" cy="742" r="4" fill="#3B5A8C"/>
+  <circle cx="186" cy="742" r="4" fill="#3B5A8C"/>
+  <circle cx="198" cy="742" r="4" fill="#3B5A8C"/>
+  <circle cx="210" cy="742" r="4" fill="#CCCCCC"/>
+  
+  <text x="50" y="765" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="11" fill="#333333">InDesign</text>
+  <circle cx="150" cy="762" r="4" fill="#3B5A8C"/>
+  <circle cx="162" cy="762" r="4" fill="#3B5A8C"/>
+  <circle cx="174" cy="762" r="4" fill="#3B5A8C"/>
+  <circle cx="186" cy="762" r="4" fill="#CCCCCC"/>
+  <circle cx="198" cy="762" r="4" fill="#CCCCCC"/>
+  <circle cx="210" cy="762" r="4" fill="#CCCCCC"/>
+  
+  <!-- 右侧区域 - 教育经历 -->
+  <text x="250" y="380" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="16" fill="#333333" font-weight="bold">教育经历</text>
+  <text x="340" y="380" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#666666">Education</text>
+  <line x1="250" y1="390" x2="550" y2="390" stroke="#3B5A8C" stroke-width="2"/>
+  
+  <text x="250" y="415" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="11" fill="#333333">
+    <tspan x="250" dy="0" font-weight="bold">[起止年份]</tspan>
+    <tspan x="320" dy="0">· [专业/学位]</tspan>
+    <tspan x="420" dy="0">[学校名称/国家]</tspan>
+  </text>
+  <text x="250" y="440" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="11" fill="#333333">
+    <tspan x="250" dy="0" font-weight="bold">[起止年份]</tspan>
+    <tspan x="320" dy="0">· [专业/学位]</tspan>
+    <tspan x="420" dy="0">[学校名称/国家]</tspan>
+  </text>
+  
+  <!-- 右侧区域 - 工作经历 -->
+  <text x="250" y="490" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="16" fill="#333333" font-weight="bold">工作经历</text>
+  <text x="340" y="490" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#666666">Experience</text>
+  <line x1="250" y1="500" x2="550" y2="500" stroke="#3B5A8C" stroke-width="2"/>
+  
+  <!-- 工作经历条目1 -->
+  <text x="250" y="525" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="11" fill="#666666">[起止年份]</text>
+  <text x="320" y="525" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="11" fill="#333333" font-weight="bold">[公司名称]</text>
+  <text x="430" y="525" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="11" fill="#333333">[职位]</text>
+  <text x="250" y="545" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666666">• [工作职责描述]</text>
+  <text x="250" y="560" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666666">• [工作职责描述]</text>
+  
+  <!-- 工作经历条目2 -->
+  <text x="250" y="590" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="11" fill="#666666">[起止年份]</text>
+  <text x="320" y="590" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="11" fill="#333333" font-weight="bold">[公司名称]</text>
+  <text x="430" y="590" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="11" fill="#333333">[职位]</text>
+  <text x="250" y="610" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666666">• [工作职责描述]</text>
+  <text x="250" y="625" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666666">• [工作职责描述]</text>
+  
+  <!-- 工作经历条目3 -->
+  <text x="250" y="655" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="11" fill="#666666">[起止年份]</text>
+  <text x="320" y="655" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="11" fill="#333333" font-weight="bold">[公司名称]</text>
+  <text x="430" y="655" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="11" fill="#333333">[职位]</text>
+  <text x="250" y="675" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666666">• [工作职责描述]</text>
+  <text x="250" y="690" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666666">• [工作职责描述]</text>
+  
+  <!-- 底部提示 -->
+  <text x="297.64" y="820" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="8" fill="#999999" text-anchor="middle">此模板可在 Adobe Illustrator 中打开并编辑所有文本内容</text>
+  
+</svg>

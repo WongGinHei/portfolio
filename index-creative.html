@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王健希 | 艺术家作品集 - Creative</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #F5F1E8;
+            color: #1A1A1A;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* 全局手写体装饰 */
+        .handwritten {
+            font-family: 'Caveat', cursive;
+            font-weight: 400;
+        }
+        
+        /* ===== 头部区域 ===== */
+        header {
+            background-color: #1A1A1A;
+            padding: 30px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: #F5F1E8;
+            text-transform: uppercase;
+        }
+        
+        .header-nav {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .header-nav a {
+            color: #F5F1E8;
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            position: relative;
+        }
+        
+        .header-nav a:hover {
+            opacity: 1;
+        }
+        
+        .header-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #C41E3A;
+            transition: width 0.3s;
+        }
+        
+        .header-nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* ===== 创意Hero区域 ===== */
+        .creative-hero {
+            background: linear-gradient(135deg, #1A1A1A 0%, #2D2D2D 100%);
+            min-height: 80vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            padding: 100px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 2;
+        }
+        
+        .hero-label {
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: #C41E3A;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        
+        .hero-title {
+            font-size: 72px;
+            font-weight: 300;
+            color: #F5F1E8;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        
+        .hero-title span {
+            display: block;
+            font-size: 24px;
+            color: #888;
+            margin-top: 15px;
+            letter-spacing: 8px;
+        }
+        
+        .hero-desc {
+            font-size: 14px;
+            color: #999;
+            max-width: 400px;
+            line-height: 1.8;
+            margin-top: 30px;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 60px;
+            margin-top: 50px;
+        }
+        
+        .stat-item {
+            text-align: left;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 200;
+            color: #F5F1E8;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 10px;
+            color: #666;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+        
+        .hero-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-image-container {
+            width: 70%;
+            aspect-ratio: 3/4;
+            background: #333;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.5s;
+        }
+        
+        .hero-image-container:hover img {
+            filter: grayscale(0%);
+        }
+        
+        .hero-image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        }
+        
+        .hero-image-title {
+            font-size: 28px;
+            color: #F5F1E8;
+            font-weight: 300;
+        }
+        
+        .floating-number {
+            position: absolute;
+            font-size: 200px;
+            font-weight: 700;
+            color: rgba(196, 30, 58, 0.1);
+            right: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+            font-family: 'Times New Roman', serif;
+        }
+        
+        /* ===== 目录导航区 ===== */
+        .toc-section {
+            background: #F5F1E8;
+            padding: 80px 60px;
+        }
+        
+        .toc-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 80px;
+        }
+        
+        .toc-title {
+            font-size: 14px;
+            letter-spacing: 3px;
+            color: #1A1A1A;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .toc-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: #C41E3A;
+        }
+        
+        .toc-list {
+            list-style: none;
+        }
+        
+        .toc-item {
+            display: flex;
+            align-items: baseline;
+            padding: 20px 0;
+            border-bottom: 1px solid #E0DCD3;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .toc-item:hover {
+            padding-left: 20px;
+            background: rgba(196, 30, 58, 0.03);
+        }
+        
+        .toc-number {
+            font-size: 48px;
+            font-weight: 200;
+            color: #C41E3A;
+            width: 80px;
+            line-height: 1;
+        }
+        
+        .toc-content {
+            flex: 1;
+        }
+        
+        .toc-name {
+            font-size: 18px;
+            font-weight: 500;
+            color: #1A1A1A;
+            margin-bottom: 5px;
+        }
+        
+        .toc-desc {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        /* ===== 交错式作品展示 ===== */
+        .zigzag-section {
+            padding: 0;
+        }
+        
+        .zigzag-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+        }
+        
+        .zigzag-item:nth-child(even) {
+            direction: rtl;
+        }
+        
+        .zigzag-item:nth-child(even) > * {
+            direction: ltr;
+        }
+        
+        .zigzag-content {
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #FDF8F0;
+        }
+        
+        .zigzag-item:nth-child(odd) .zigzag-content {
+            background: #1A1A1A;
+            color: #F5F1E8;
+        }
+        
+        .zigzag-label {
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.6;
+            margin-bottom: 20px;
+        }
+        
+        .zigzag-title {
+            font-size: 42px;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+        
+        .zigzag-desc {
+            font-size: 14px;
+            line-height: 1.8;
+            opacity: 0.8;
+            margin-bottom: 40px;
+        }
+        
+        .zigzag-meta {
+            display: flex;
+            gap: 40px;
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+        
+        .zigzag-image {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .zigzag-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s;
+        }
+        
+        .zigzag-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .zigzag-number {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            font-size: 120px;
+            font-weight: 700;
+            color: rgba(255,255,255,0.1);
+            line-height: 1;
+            font-family: 'Times New Roman', serif;
+        }
+        
+        /* ===== 卡片堆叠展示 ===== */
+        .cards-section {
+            background: #1A1A1A;
+            padding: 100px 60px;
+            position: relative;
+        }
+        
+        .cards-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .cards-label {
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: #C41E3A;
+            text-transform: uppercase;
+        }
+        
+        .cards-title {
+            font-size: 48px;
+            font-weight: 300;
+            color: #F5F1E8;
+            margin-top: 20px;
+        }
+        
+        .cards-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 30px;
+            perspective: 1000px;
+        }
+        
+        .card-item {
+            flex: 1;
+            background: #FDF8F0;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.5s;
+            transform-style: preserve-3d;
+        }
+        
+        .card-item:hover {
+            transform: translateY(-20px) rotateX(5deg);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+        
+        .card-image {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .card-item:hover .card-image img {
+            transform: scale(1.1);
+        }
+        
+        .card-tag {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #C41E3A;
+            color: #fff;
+            padding: 5px 15px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .card-content {
+            padding: 30px;
+        }
+        
+        .card-number {
+            font-size: 48px;
+            font-weight: 200;
+            color: #C41E3A;
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+        
+        .card-title {
+            font-size: 20px;
+            font-weight: 500;
+            color: #1A1A1A;
+            margin-bottom: 10px;
+        }
+        
+        .card-desc {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* ===== 瀑布流展示 ===== */
+        .masonry-section {
+            padding: 100px 60px;
+            background: #F5F1E8;
+        }
+        
+        .masonry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 60px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .masonry-title-section h2 {
+            font-size: 36px;
+            font-weight: 300;
+            color: #1A1A1A;
+            margin-bottom: 10px;
+        }
+        
+        .masonry-title-section span {
+            font-size: 14px;
+            color: #888;
+            letter-spacing: 3px;
+        }
+        
+        .filter-tabs {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .filter-tab {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #888;
+            cursor: pointer;
+            padding: 5px 0;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .filter-tab:hover,
+        .filter-tab.active {
+            color: #C41E3A;
+            border-bottom-color: #C41E3A;
+        }
+        
+        .masonry-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            column-count: 3;
+            column-gap: 25px;
+        }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .masonry-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .masonry-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .masonry-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 26, 26, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .masonry-item:hover .masonry-overlay {
+            opacity: 1;
+        }
+        
+        .masonry-overlay-title {
+            font-size: 18px;
+            color: #F5F1E8;
+            margin-bottom: 10px;
+            transform: translateY(20px);
+            transition: transform 0.3s;
+        }
+        
+        .masonry-item:hover .masonry-overlay-title {
+            transform: translateY(0);
+        }
+        
+        .masonry-overlay-meta {
+            font-size: 11px;
+            color: #888;
+            letter-spacing: 1px;
+            transform: translateY(20px);
+            transition: transform 0.3s 0.1s;
+        }
+        
+        .masonry-item:hover .masonry-overlay-meta {
+            transform: translateY(0);
+        }
+        
+        /* ===== 时间轴展示 ===== */
+        .timeline-section {
+            background: #1A1A1A;
+            padding: 100px 60px;
+        }
+        
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .timeline-header h2 {
+            font-size: 36px;
+            font-weight: 300;
+            color: #F5F1E8;
+        }
+        
+        .timeline-header span {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            letter-spacing: 3px;
+            margin-top: 10px;
+        }
+        
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, #C41E3A, transparent);
+        }
+        
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            grid-column: 2;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-image {
+            grid-column: 1;
+            grid-row: 1;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 20px;
+            width: 16px;
+            height: 16px;
+            background: #C41E3A;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            border: 4px solid #1A1A1A;
+        }
+        
+        .timeline-year {
+            font-size: 72px;
+            font-weight: 700;
+            color: rgba(196, 30, 58, 0.2);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-content h3 {
+            font-size: 24px;
+            color: #F5F1E8;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-content p {
+            font-size: 13px;
+            color: #888;
+            line-height: 1.8;
+        }
+        
+        .timeline-image {
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        
+        .timeline-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        /* ===== 全屏展示 ===== */
+        .fullscreen-showcase {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+        }
+        
+        .fullscreen-image {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fullscreen-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .fullscreen-info {
+            background: #F5F1E8;
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .fullscreen-number {
+            font-size: 120px;
+            font-weight: 200;
+            color: #C41E3A;
+            line-height: 1;
+            margin-bottom: 30px;
+        }
+        
+        .fullscreen-title {
+            font-size: 48px;
+            font-weight: 300;
+            color: #1A1A1A;
+            margin-bottom: 20px;
+        }
+        
+        .fullscreen-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.8;
+            max-width: 400px;
+        }
+        
+        .fullscreen-nav {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .fullscreen-nav-btn {
+            width: 60px;
+            height: 60px;
+            border: 1px solid #1A1A1A;
+            background: transparent;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+        
+        .fullscreen-nav-btn:hover {
+            background: #1A1A1A;
+            color: #F5F1E8;
+        }
+        
+        /* ===== 响应式 ===== */
+        @media (max-width: 1024px) {
+            .creative-hero {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-visual {
+                display: none;
+            }
+            
+            .zigzag-item,
+            .fullscreen-showcase {
+                grid-template-columns: 1fr;
+            }
+            
+            .zigzag-item:nth-child(even) {
+                direction: ltr;
+            }
+            
+            .masonry-grid {
+                column-count: 2;
+            }
+            
+            .cards-container {
+                flex-direction: column;
+            }
+            
+            .timeline-item {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-image {
+                grid-column: 1;
+            }
+            
+            .timeline-line {
+                left: 20px;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .masonry-grid {
+                column-count: 1;
+            }
+            
+            .hero-title {
+                font-size: 42px;
+            }
+            
+            .toc-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 头部导航 -->
+    <header>
+        <div class="logo">Wang Jianxi Portfolio</div>
+        <nav class="header-nav">
+            <a href="#works">Works</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- 创意Hero区域 -->
+    <section class="creative-hero" id="about">
+        <div class="floating-number">01</div>
+        <div class="hero-content">
+            <div class="hero-label">Artist / Educator</div>
+            <h1 class="hero-title">
+                王健希
+                <span>WANG JIANXI</span>
+            </h1>
+            <p class="hero-desc">
+                研究生期间通过学习与运用"形色解析"相关方法论，在绘画创作、海报设计、视频剪辑与网站设计等多个领域形成了独特的艺术语言。
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">6+</div>
+                    <div class="stat-label">Years Study</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Artworks</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Awards</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-image-container">
+                <img src="王健希个人照片.jpg" alt="王健希">
+                <div class="hero-image-overlay">
+                    <div class="hero-image-title">Portrait</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 目录导航 -->
+    <section class="toc-section">
+        <div class="toc-container">
+            <div class="toc-title">Contents</div>
+            <ul class="toc-list">
+                <li class="toc-item">
+                    <span class="toc-number">01</span>
+                    <div class="toc-content">
+                        <div class="toc-name">重彩·色粉作品</div>
+                        <div class="toc-desc">Heavy Color & Pastel Works</div>
+                    </div>
+                </li>
+                <li class="toc-item">
+                    <span class="toc-number">02</span>
+                    <div class="toc-content">
+                        <div class="toc-name">水墨作品</div>
+                        <div class="toc-desc">Ink Wash Painting</div>
+                    </div>
+                </li>
+                <li class="toc-item">
+                    <span class="toc-number">03</span>
+                    <div class="toc-content">
+                        <div class="toc-name">作品草稿</div>
+                        <div class="toc-desc">Sketches & Drafts</div>
+                    </div>
+                </li>
+                <li class="toc-item">
+                    <span class="toc-number">04</span>
+                    <div class="toc-content">
+                        <div class="toc-name">海报设计</div>
+                        <div class="toc-desc">Poster Design</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 交错式展示 - 重彩色粉 -->
+    <section class="zigzag-section" id="works">
+        <div class="zigzag-item">
+            <div class="zigzag-content">
+                <div class="zigzag-label">Series 01</div>
+                <h2 class="zigzag-title">系列组画<br>《A One And A Two》</h2>
+                <p class="zigzag-desc">
+                    这组作品探讨了时间与记忆的关系，通过重彩技法表现生命中的瞬间与永恒。每一幅作品都是一个独立的故事，同时又构成了一个完整的叙事。
+                </p>
+                <div class="zigzag-meta">
+                    <span>2026</span>
+                    <span>纸本重彩</span>
+                    <span>160×50cm</span>
+                </div>
+            </div>
+            <div class="zigzag-image">
+                <img src="视觉作品/重彩、色粉作品/系列组画《A One And A Two（一一）》/系列组画《A One And A Two（一一）》之（Ⅰ）《 The Ray Of Tomorrow（未来之念）》 2026 160x50x2 纸本重彩.jpg" alt="未来之念">
+                <div class="zigzag-number">01</div>
+            </div>
+        </div>
+        
+        <div class="zigzag-item">
+            <div class="zigzag-content">
+                <div class="zigzag-label">Series 02</div>
+                <h2 class="zigzag-title">《午夜诗》<br>系列作品</h2>
+                <p class="zigzag-desc">
+                    午夜时分的思绪最为真实，这组作品用色粉捕捉了那些转瞬即逝的情感瞬间，画面中的每一笔触都是内心世界的投射。
+                </p>
+                <div class="zigzag-meta">
+                    <span>2025</span>
+                    <span>卡纸色粉</span>
+                    <span>40×40cm</span>
+                </div>
+            </div>
+            <div class="zigzag-image">
+                <img src="视觉作品/重彩、色粉作品/《午夜诗》系列作品/《匆匆》2025 40x40 卡纸色粉.jpg" alt="匆匆">
+                <div class="zigzag-number">02</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 卡片堆叠展示 -->
+    <section class="cards-section">
+        <div class="cards-header">
+            <div class="cards-label">Selected Works</div>
+            <h2 class="cards-title">精选作品</h2>
+        </div>
+        <div class="cards-container">
+            <div class="card-item">
+                <div class="card-image">
+                    <img src="视觉作品/重彩、色粉作品/其他作品/《缂丝凤穿牡丹》2025 40x40 纸本重彩.jpg" alt="缂丝凤穿牡丹">
+                    <div class="card-tag">Awarded</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-number">01</div>
+                    <h3 class="card-title">缂丝凤穿牡丹</h3>
+                    <p class="card-desc">"意玄工妙"贵州省小幅工笔画双年展参展作品</p>
+                </div>
+            </div>
+            <div class="card-item">
+                <div class="card-image">
+                    <img src="视觉作品/水墨作品/水墨人物创作-城市青年.jpg" alt="城市青年">
+                    <div class="card-tag">Featured</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-number">02</div>
+                    <h3 class="card-title">城市青年</h3>
+                    <p class="card-desc">水墨人物创作，展现当代都市人的精神面貌</p>
+                </div>
+            </div>
+            <div class="card-item">
+                <div class="card-image">
+                    <img src="视觉作品/海报设计/形色解析课程作业展海报.png" alt="形色解析">
+                    <div class="card-tag">Design</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-number">03</div>
+                    <h3 class="card-title">形色解析展</h3>
+                    <p class="card-desc">课程作业展海报设计，视觉传达设计作品</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 瀑布流展示 -->
+    <section class="masonry-section">
+        <div class="masonry-header">
+            <div class="masonry-title-section">
+                <h2>作品画廊</h2>
+                <span>Gallery / Mixed Media</span>
+            </div>
+            <div class="filter-tabs">
+                <div class="filter-tab active">All</div>
+                <div class="filter-tab">Painting</div>
+                <div class="filter-tab">Design</div>
+                <div class="filter-tab">Photo</div>
+            </div>
+        </div>
+        <div class="masonry-grid">
+            <div class="masonry-item">
+                <img src="视觉作品/重彩、色粉作品/任朝暮系列作品/《任朝暮》组画之（一）2025 85x40 纸本重彩.jpg" alt="任朝暮">
+                <div class="masonry-overlay">
+                    <div class="masonry-overlay-title">《任朝暮》组画之一</div>
+                    <div class="masonry-overlay-meta">2025 / 纸本重彩</div>
+                </div>
+            </div>
+            <div class="masonry-item">
+                <img src="视觉作品/水墨作品/水墨插画创作-守.jpg" alt="守">
+                <div class="masonry-overlay">
+                    <div class="masonry-overlay-title">水墨插画 - 守</div>
+                    <div class="masonry-overlay-meta">水墨创作</div>
+                </div>
+            </div>
+            <div class="masonry-item">
+                <img src="视觉作品/重彩、色粉作品/写生作品/《京都之夜》2024 25x18 卡纸色粉.jpg" alt="京都之夜">
+                <div class="masonry-overlay">
+                    <div class="masonry-overlay-title">《京都之夜》</div>
+                    <div class="masonry-overlay-meta">2024 / 卡纸色粉</div>
+                </div>
+            </div>
+            <div class="masonry-item">
+                <img src="视觉作品/海报设计/拼贴海报-消费主义.jpg" alt="消费主义">
+                <div class="masonry-overlay">
+                    <div class="masonry-overlay-title">拼贴海报 - 消费主义</div>
+                    <div class="masonry-overlay-meta">海报设计</div>
+                </div>
+            </div>
+            <div class="masonry-item">
+                <img src="视觉作品/重彩、色粉作品/抽象色彩作品/《City Talk》（Ⅰ）2025 40x40 卡纸色粉.png" alt="City Talk">
+                <div class="masonry-overlay">
+                    <div class="masonry-overlay-title">《City Talk》</div>
+                    <div class="masonry-overlay-meta">2025 / 抽象色彩</div>
+                </div>
+            </div>
+            <div class="masonry-item">
+                <img src="视觉作品/水墨作品/白描创作-秀场幕后.jpg" alt="秀场幕后">
+                <div class="masonry-overlay">
+                    <div class="masonry-overlay-title">白描 - 秀场幕后</div>
+                    <div class="masonry-overlay-meta">白描创作</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 时间轴展示 -->
+    <section class="timeline-section">
+        <div class="timeline-header">
+            <h2>创作历程</h2>
+            <span>Creative Journey / 2018-2026</span>
+        </div>
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2024</div>
+                    <h3>"意玄工妙"双年展参展</h3>
+                    <p>作品《缂丝凤穿牡丹》入选贵州省小幅工笔画双年展，获得业界认可。</p>
+                </div>
+                <div class="timeline-image">
+                    <img src="视觉作品/重彩、色粉作品/其他作品/《缂丝凤穿牡丹》2025 40x40 纸本重彩.jpg" alt="缂丝凤穿牡丹">
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2023</div>
+                    <h3>攻读硕士学位</h3>
+                    <p>进入北京服装学院美术与书法专业，师从贾宝锋老师，深入研究中国画。</p>
+                </div>
+                <div class="timeline-image">
+                    <img src="视觉作品/水墨作品/水墨人像写生1.jpg" alt="人像写生">
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2021</div>
+                    <h3>"岭南墨韵"获奖</h3>
+                    <p>水墨作品《希望之光》获广东省高校师生作品展二等奖。</p>
+                </div>
+                <div class="timeline-image">
+                    <img src="视觉作品/水墨作品/水墨小品.jpg" alt="水墨小品">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 全屏展示 -->
+    <section class="fullscreen-showcase">
+        <div class="fullscreen-image">
+            <img src="视觉作品/重彩、色粉作品/其他作品/《暗恋桃花源》2026 160x21 纸本重彩.jpg" alt="暗恋桃花源">
+        </div>
+        <div class="fullscreen-info">
+            <div class="fullscreen-number">05</div>
+            <h2 class="fullscreen-title">《暗恋桃花源》</h2>
+            <p class="fullscreen-desc">
+                这幅长卷作品以独特的视角诠释了传统与现代的融合，
+                160×21cm的尺寸让观者仿佛置身于一个绵延的梦境之中。
+                纸本重彩的技法赋予了画面丰富的层次感和质感。
+            </p>
+        </div>
+    </section>
+
+</body>
+</html>

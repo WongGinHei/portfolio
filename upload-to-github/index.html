@@ -1,0 +1,2210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王健希 | 艺术家作品集</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #F5F1E8;
+            color: #1A1A1A;
+            line-height: 1.6;
+        }
+        
+        /* 头部区域 */
+        header {
+            background-color: #F5F1E8;
+            padding: 40px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #E0DCD3;
+        }
+        
+        .logo {
+            font-size: 14px;
+            letter-spacing: 2px;
+            color: #666;
+        }
+        
+        .year {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* 主标题 */
+        .hero-title {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .hero-title h1 {
+            font-size: 80px;
+            font-weight: 300;
+            color: #C41E3A;
+            letter-spacing: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .hero-title .subtitle {
+            font-size: 16px;
+            color: #666;
+            letter-spacing: 5px;
+        }
+        
+        /* 个人简介区域 - 形式1：杂志式分栏 */
+        .profile-section {
+            background-color: #1A1A1A;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 45% 55%;
+            min-height: 700px;
+        }
+        
+        .profile-image {
+            position: relative;
+            overflow: hidden;
+            min-height: 600px;
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            filter: grayscale(100%);
+            transition: filter 0.5s;
+        }
+        
+        .profile-image:hover img {
+            filter: grayscale(0%);
+        }
+        
+        .profile-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, transparent, rgba(26,26,26,0.3));
+        }
+        
+        .profile-info {
+            padding: 80px 60px;
+            color: #F5F1E8;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .profile-info h2 {
+            font-size: 48px;
+            font-weight: 300;
+            margin-bottom: 5px;
+            color: #F5F1E8;
+        }
+        
+        .profile-info .name-en {
+            font-size: 14px;
+            color: #888;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+        }
+        
+        .profile-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .profile-block h3 {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #C41E3A;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .profile-block p {
+            font-size: 13px;
+            color: #aaa;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .profile-block .education-item {
+            margin-bottom: 20px;
+            font-size: 13px;
+            line-height: 1.8;
+            color: #ccc;
+        }
+        
+        .profile-block .education-item strong {
+            color: #F5F1E8;
+            font-weight: 500;
+        }
+        
+        .profile-block .award-item {
+            margin-bottom: 15px;
+            font-size: 12px;
+            line-height: 1.6;
+            color: #aaa;
+            padding-left: 15px;
+            border-left: 2px solid #C41E3A;
+        }
+        
+        .profile-block .skills-list {
+            font-size: 12px;
+            line-height: 2;
+            color: #999;
+            list-style: none;
+        }
+        
+        .profile-block .skills-list li {
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .profile-block .skills-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #C41E3A;
+        }
+        
+        .profile-contact {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+        }
+        
+        .profile-contact h3 {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #C41E3A;
+            margin-bottom: 15px;
+        }
+        
+        .profile-contact p {
+            font-size: 13px;
+            color: #888;
+            line-height: 2;
+        }
+        
+        /* 导航菜单 */
+        .nav-section {
+            background-color: #F5F1E8;
+            padding: 30px 60px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #E0DCD3;
+        }
+        
+        .nav-section ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+        
+        .nav-section a {
+            color: #1A1A1A;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            padding: 10px 0;
+            position: relative;
+            font-weight: 500;
+        }
+        
+        .nav-section a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #C41E3A;
+            transition: width 0.3s;
+        }
+        
+        .nav-section a:hover {
+            color: #C41E3A;
+        }
+        
+        .nav-section a:hover::after {
+            width: 100%;
+        }
+        
+        /* ===== 模块基础样式 ===== */
+        .gallery-section {
+            padding: 100px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            margin-bottom: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            font-weight: 300;
+            color: #1A1A1A;
+            line-height: 1.2;
+        }
+        
+        .section-title span {
+            display: block;
+            font-size: 14px;
+            color: #999;
+            letter-spacing: 3px;
+            margin-top: 8px;
+        }
+        
+        .section-desc {
+            font-size: 12px;
+            color: #666;
+            text-align: right;
+        }
+        
+        .sub-section-title {
+            font-size: 20px;
+            font-weight: 500;
+            color: #1A1A1A;
+            margin: 60px 0 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .sub-section-title::before {
+            content: '';
+            width: 30px;
+            height: 2px;
+            background: #C41E3A;
+        }
+        
+        /* ===== 形式2：重彩色粉 - 交错式大图展示 ===== */
+        #zhongcai {
+            background: #FDF8F0;
+        }
+        
+        .zhongcai-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .zhongcai-main-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background: #E8E4DB;
+            aspect-ratio: 1/1; /* 正方形适配 */
+        }
+        
+        .zhongcai-main-item.large {
+            grid-row: span 2;
+            aspect-ratio: 3/4; /* 稍高但不过分 */
+        }
+        
+        .zhongcai-main-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* 改为 contain 避免裁切 */
+            transition: transform 0.6s;
+            background: #E8E4DB;
+        }
+        
+        .zhongcai-main-item:hover img {
+            transform: scale(1.03);
+        }
+        
+        .zhongcai-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        
+        .zhongcai-main-item:hover .zhongcai-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .zhongcai-overlay h4 {
+            font-size: 18px;
+            color: #F5F1E8;
+            font-weight: 400;
+            margin-bottom: 6px;
+        }
+        
+        .zhongcai-overlay p {
+            font-size: 12px;
+            color: #aaa;
+        }
+        
+        /* 系列组画特殊样式 */
+        .series-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        
+        .series-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background: #E8E4DB;
+            aspect-ratio: 16/10; /* 横幅比例适配 */
+        }
+        
+        .series-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* 改为 contain 避免裁切 */
+            transition: transform 0.5s;
+            background: #E8E4DB;
+        }
+        
+        .series-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .series-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #C41E3A;
+            color: #fff;
+            padding: 5px 12px;
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+        
+        .series-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: #F5F1E8;
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        
+        .series-info h5 {
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+        
+        .series-info p {
+            font-size: 10px;
+            color: #aaa;
+        }
+        
+        /* ===== 形式3：水墨作品 - 自动横向滚动展示 ===== */
+        #shuimo {
+            background: #1A1A1A;
+            padding: 100px 0;
+            max-width: 100%;
+            overflow: hidden;
+        }
+        
+        #shuimo .section-title {
+            color: #F5F1E8;
+        }
+        
+        #shuimo .section-title span {
+            color: #666;
+        }
+        
+        .shuimo-scroll-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .shuimo-scroll {
+            display: flex;
+            gap: 30px;
+            padding: 20px 0 40px;
+            animation: scrollLeft 30s linear infinite;
+            width: max-content;
+        }
+        
+        .shuimo-scroll:hover {
+            animation-play-state: paused;
+        }
+        
+        @keyframes scrollLeft {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        .shuimo-item {
+            flex: 0 0 auto;
+            max-width: 400px;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .shuimo-item.portrait {
+            max-width: 320px;
+        }
+        
+        .shuimo-item img {
+            width: auto;
+            max-height: 450px;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.5s;
+            display: block;
+            background: #2a2a2a;
+        }
+        
+        .shuimo-item:hover img {
+            transform: scale(1.03);
+        }
+        
+        .shuimo-info {
+            padding: 20px 0;
+            color: #F5F1E8;
+            min-height: 80px;
+        }
+        
+        .shuimo-info h4 {
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+        
+        .shuimo-info p {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .shuimo-index {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 36px;
+            font-weight: 200;
+            color: rgba(245,241,232,0.15);
+            line-height: 1;
+            z-index: 2;
+        }
+        
+        /* ===== 形式4：作品草稿 - 分类瀑布流展示 ===== */
+        #caogao {
+            background: #F5F1E8;
+        }
+        
+        /* 分类标签 */
+        .caogao-tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .caogao-tab {
+            padding: 12px 30px;
+            background: transparent;
+            border: 1px solid #ddd;
+            font-size: 13px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #666;
+        }
+        
+        .caogao-tab:hover {
+            border-color: #C41E3A;
+            color: #C41E3A;
+        }
+        
+        .caogao-tab.active {
+            background: #1A1A1A;
+            border-color: #1A1A1A;
+            color: #F5F1E8;
+        }
+        
+        /* 瀑布流网格 */
+        .caogao-waterfall {
+            column-count: 4;
+            column-gap: 25px;
+        }
+        
+        .caogao-card {
+            break-inside: avoid;
+            margin-bottom: 25px;
+            background: #fff;
+            overflow: hidden;
+            cursor: pointer;
+            transition: opacity 0.3s, transform 0.3s, box-shadow 0.4s;
+            position: relative;
+        }
+        
+        .caogao-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .caogao-card-image {
+            position: relative;
+            overflow: hidden;
+            background: #E8E4DB;
+        }
+        
+        .caogao-card-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .caogao-card:hover .caogao-card-image img {
+            transform: scale(1.03);
+        }
+        
+        /* 类型标签 */
+        .caogao-type-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #C41E3A;
+            color: #fff;
+            padding: 5px 12px;
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        /* 悬浮信息层 */
+        .caogao-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 26, 26, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            text-align: center;
+        }
+        
+        .caogao-card:hover .caogao-card-overlay {
+            opacity: 1;
+        }
+        
+        .caogao-card-title {
+            font-size: 16px;
+            color: #F5F1E8;
+            margin-bottom: 10px;
+            transform: translateY(15px);
+            transition: transform 0.3s;
+        }
+        
+        .caogao-card:hover .caogao-card-title {
+            transform: translateY(0);
+        }
+        
+        .caogao-card-desc {
+            font-size: 12px;
+            color: #888;
+            line-height: 1.6;
+            transform: translateY(15px);
+            transition: transform 0.3s 0.1s;
+        }
+        
+        .caogao-card:hover .caogao-card-desc {
+            transform: translateY(0);
+        }
+        
+        .caogao-card-meta {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+            font-size: 11px;
+            color: #666;
+            transform: translateY(15px);
+            transition: transform 0.3s 0.15s;
+        }
+        
+        .caogao-card:hover .caogao-card-meta {
+            transform: translateY(0);
+        }
+        
+        /* 卡片底部信息（非悬浮状态显示） */
+        .caogao-card-info {
+            padding: 20px;
+            background: #fff;
+        }
+        
+        .caogao-card-info h4 {
+            font-size: 15px;
+            font-weight: 500;
+            color: #1A1A1A;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        
+        .caogao-card-info p {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        /* ===== 形式5：摄影作品 - 全出血大图展示 ===== */
+        #sheying {
+            background: #1A1A1A;
+            padding: 0;
+            max-width: 100%;
+        }
+        
+        #sheying .section-header {
+            padding: 60px;
+            margin-bottom: 0;
+        }
+        
+        #sheying .section-title {
+            color: #F5F1E8;
+        }
+        
+        .sheying-showcase {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            height: 80vh;
+        }
+        
+        .sheying-main {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 16/10; /* 横幅比例 */
+        }
+        
+        .sheying-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* 避免裁切 */
+            transition: transform 0.8s;
+            background: #0a0a0a;
+        }
+        
+        .sheying-main:hover img {
+            transform: scale(1.02);
+        }
+        
+        .sheying-info {
+            position: absolute;
+            bottom: 60px;
+            left: 60px;
+            color: #F5F1E8;
+        }
+        
+        .sheying-info h3 {
+            font-size: 48px;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+        
+        .sheying-info p {
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        .sheying-side {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .sheying-side-item {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border-left: 1px solid #333;
+            aspect-ratio: 16/10;
+        }
+        
+        .sheying-side-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: grayscale(100%);
+            transition: all 0.5s;
+            background: #0a0a0a;
+        }
+        
+        .sheying-side-item:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+        
+        .sheying-side-info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: #F5F1E8;
+            padding: 10px;
+            background: rgba(0,0,0,0.5);
+        }
+        
+        .sheying-side-info h4 {
+            font-size: 16px;
+            font-weight: 400;
+        }
+        
+        /* ===== 形式6：海报设计 - 网格 masonry ===== */
+        #haibao {
+            background: #FDF8F0;
+        }
+        
+        .haibao-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .haibao-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background: #E8E4DB;
+            aspect-ratio: 3/4; /* 默认海报竖幅比例 */
+        }
+        
+        .haibao-item:nth-child(2) {
+            grid-row: span 2;
+            aspect-ratio: 2/3;
+        }
+        
+        .haibao-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* 避免裁切 */
+            transition: transform 0.5s;
+            background: #E8E4DB;
+        }
+        
+        .haibao-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .haibao-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(26,26,26,0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .haibao-item:hover .haibao-overlay {
+            opacity: 1;
+        }
+        
+        .haibao-overlay h4 {
+            font-size: 18px;
+            color: #F5F1E8;
+            margin-bottom: 10px;
+            transform: translateY(20px);
+            transition: transform 0.3s;
+        }
+        
+        .haibao-item:hover .haibao-overlay h4 {
+            transform: translateY(0);
+        }
+        
+        .haibao-overlay p {
+            font-size: 12px;
+            color: #888;
+            transform: translateY(20px);
+            transition: transform 0.3s 0.1s;
+        }
+        
+        .haibao-item:hover .haibao-overlay p {
+            transform: translateY(0);
+        }
+        
+        /* ===== 形式7：其他作品 - 卡片列表 ===== */
+        #qita {
+            background: #F5F1E8;
+        }
+        
+        .qita-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .qita-item {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            padding: 30px;
+            background: #fff;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .qita-item:hover {
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transform: translateX(10px);
+        }
+        
+        .qita-image {
+            overflow: hidden;
+            background: #E8E4DB;
+            aspect-ratio: 16/10; /* 横幅比例 */
+            max-width: 300px;
+        }
+        
+        .qita-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* 避免裁切 */
+            transition: transform 0.5s;
+            background: #E8E4DB;
+        }
+        
+        .qita-item:hover .qita-image img {
+            transform: scale(1.05);
+        }
+        
+        .qita-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .qita-number {
+            font-size: 14px;
+            color: #C41E3A;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        
+        .qita-content h3 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: #1A1A1A;
+        }
+        
+        .qita-content p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        /* ===== 灯箱样式 ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 80px;
+            overflow: auto;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100%;
+            padding: 40px 0;
+        }
+        
+        .modal-content {
+            position: relative;
+            max-width: calc(100vw - 160px);
+            max-height: calc(100vh - 180px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .modal-image-wrapper {
+            position: relative;
+            max-width: 90vw;
+            max-height: calc(100vh - 200px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+        }
+        
+        .modal-content img {
+            max-width: 100%;
+            max-height: calc(100vh - 240px);
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            display: block;
+        }
+        
+        .modal-info {
+            color: #fff;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .modal-info h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        
+        .modal-info p {
+            color: #aaa;
+            font-size: 13px;
+        }
+        
+        .modal-close {
+            position: fixed;
+            top: 20px;
+            right: 40px;
+            font-size: 40px;
+            color: #fff;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            z-index: 1001;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.3);
+            border-radius: 50%;
+        }
+        
+        .modal-close:hover {
+            opacity: 1;
+            background: rgba(0,0,0,0.6);
+        }
+        
+        .modal-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            color: #fff;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+            padding: 20px;
+            user-select: none;
+            background: rgba(0,0,0,0.3);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+        }
+        
+        .modal-nav:hover {
+            opacity: 1;
+            background: rgba(0,0,0,0.6);
+        }
+        
+        .modal-prev {
+            left: 20px;
+        }
+        
+        .modal-next {
+            right: 20px;
+        }
+        
+        /* ===== 页脚 ===== */
+        footer {
+            background-color: #1A1A1A;
+            color: #F5F1E8;
+            padding: 80px 60px;
+            text-align: center;
+        }
+        
+        footer h2 {
+            font-size: 48px;
+            font-weight: 300;
+            color: #C41E3A;
+            margin-bottom: 30px;
+        }
+        
+        footer .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        footer .contact-item {
+            text-align: left;
+        }
+        
+        footer .contact-item h4 {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 8px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        footer .contact-item p {
+            font-size: 14px;
+            color: #F5F1E8;
+        }
+        
+        footer .social {
+            margin-top: 50px;
+            font-size: 12px;
+            color: #444;
+        }
+        
+        /* ===== 响应式 ===== */
+        @media (max-width: 1024px) {
+            .profile-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-image {
+                min-height: 400px;
+                height: 50vh;
+            }
+            
+            .zhongcai-showcase {
+                grid-template-columns: 1fr;
+            }
+            
+            .zhongcai-main-item.large {
+                grid-row: span 1;
+                aspect-ratio: 1/1;
+            }
+            
+            .series-gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .series-item {
+                aspect-ratio: 4/3; /* 平板端稍方正 */
+            }
+            
+            .sheying-showcase {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+            
+            .sheying-main {
+                aspect-ratio: 16/10;
+            }
+            
+            .sheying-side {
+                flex-direction: row;
+                height: 250px;
+            }
+            
+            .haibao-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .haibao-item {
+                aspect-ratio: 3/4;
+            }
+            
+            .qita-item {
+                grid-template-columns: 1fr;
+            }
+            
+            .qita-image {
+                max-width: 100%;
+                aspect-ratio: 16/10;
+            }
+            
+            .caogao-waterfall {
+                column-count: 3;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title h1 {
+                font-size: 40px;
+                letter-spacing: 8px;
+            }
+            
+            .profile-sections {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-image {
+                min-height: 300px;
+                height: 40vh;
+            }
+            
+            .series-gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .series-item {
+                aspect-ratio: 16/10; /* 手机端横幅 */
+            }
+            
+            .zhongcai-main-item,
+            .zhongcai-main-item.large {
+                aspect-ratio: 1/1; /* 正方形适配 */
+            }
+            
+            .shuimo-scroll {
+                padding: 20px;
+            }
+            
+            .shuimo-item,
+            .shuimo-item.portrait {
+                max-width: 85vw;
+            }
+            
+            .shuimo-item img {
+                max-height: 350px;
+            }
+            
+            .caogao-waterfall {
+                column-count: 2;
+                column-gap: 15px;
+            }
+            
+            .caogao-card {
+                margin-bottom: 15px;
+            }
+            
+            .caogao-tabs {
+                gap: 10px;
+            }
+            
+            .caogao-tab {
+                padding: 8px 16px;
+                font-size: 11px;
+            }
+            
+            .haibao-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .haibao-item,
+            .haibao-item:nth-child(2) {
+                grid-row: span 1;
+                aspect-ratio: 3/4;
+            }
+            
+            .gallery-section {
+                padding: 60px 20px;
+            }
+            
+            .nav-section ul {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-section a {
+                font-size: 11px;
+            }
+            
+            .modal {
+                padding: 20px;
+            }
+            
+            .modal-nav {
+                font-size: 24px;
+                width: 45px;
+                height: 45px;
+            }
+            
+            .sheying-side {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .sheying-side-item {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 头部 -->
+    <header>
+        <div class="logo">WANG JIANXI PORTFOLIO</div>
+        <div class="year">2025</div>
+    </header>
+
+    <!-- 主标题 -->
+    <div class="hero-title">
+        <h1>PORTFOLIO</h1>
+        <p class="subtitle">艺术家作品集</p>
+    </div>
+
+    <!-- 个人简介 - 形式1：杂志式分栏 -->
+    <section class="profile-section" id="profile">
+        <div class="profile-image">
+            <img src="王健希个人照片.jpg" alt="王健希">
+        </div>
+        <div class="profile-info">
+            <h2>王健希</h2>
+            <p class="name-en">WANG JIANXI</p>
+            
+            <div class="profile-sections">
+                <div class="profile-block">
+                    <h3>关于我</h3>
+                    <p>我叫王健希，本人拥有较强的学习能力，研究生期间通过学习与运用贾宝锋导师的"形色解析"相关方法论在解决平面视觉方面的问题上掌握了一套系统的方法，可快速理解视觉相关领域的结构化知识与方法，在日常中大量运用于绘画创作、海报设计、视频剪辑与网站设计等多个领域，并能够结合我的美术教育背景在担任导师课程助教等实践机会中熟练掌握该方法的转化与输出。研究生期间创作了大量绘画、影像等相关方向的作品的同时积极配合导师项目工作，协助导师完成多个项目的策划、实施推进与结项并完成其中相关的宣发、撤布展览工作，执行力强。</p>
+                </div>
+                
+                <div class="profile-block">
+                    <h3>教育经历</h3>
+                    <div class="education-item">
+                        <strong>硕士 / 北京服装学院</strong><br>
+                        2023.9 — 2026.7<br>
+                        美术与书法专业 中国画方向<br>
+                        师从贾宝锋老师
+                    </div>
+                    <div class="education-item">
+                        <strong>本科 / 广东第二师范学院</strong><br>
+                        2018.9 — 2022.7<br>
+                        美术教育专业 中国画方向
+                    </div>
+                </div>
+                
+                <div class="profile-block">
+                    <h3>获奖·参展</h3>
+                    <div class="award-item">
+                        "意玄工妙"贵州省小幅工笔画双年展<br>
+                        《缂丝凤穿牡丹》参展 2025.6
+                    </div>
+                    <div class="award-item">
+                        "岭南墨韵"广东省高校师生作品展二等奖<br>
+                        《希望之光》2021.9
+                    </div>
+                    <div class="award-item">
+                        北京市大学生书法大赛一等奖<br>
+                        第十二届"兰亭杯"《北风行》2025.7
+                    </div>
+                </div>
+                
+                <div class="profile-block">
+                    <h3>个人技能</h3>
+                    <ul class="skills-list">
+                        <li>初中美术教师资格证书</li>
+                        <li>AI Agent编程、设计软件</li>
+                        <li>图像、视频创作、Vibe Coding</li>
+                        <li>海报设计、木作等</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="profile-contact">
+                <h3>联系方式</h3>
+                <p>
+                    wongginhei@outlook.com<br>
+                    +86 152 1735 3803<br>
+                    北京市朝阳区太阳宫芍药居甲1号 北京服装学院
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 导航 -->
+    <nav class="nav-section">
+        <ul>
+            <li><a href="#zhongcai">重彩·色粉</a></li>
+            <li><a href="#shuimo">水墨作品</a></li>
+            <li><a href="#caogao">作品草稿</a></li>
+            <li><a href="#sheying">摄影作品</a></li>
+            <li><a href="#haibao">海报设计</a></li>
+            <li><a href="#qita">其他作品</a></li>
+        </ul>
+    </nav>
+
+    <!-- 重彩、色粉作品 - 形式2：交错式大图展示 -->
+    <section class="gallery-section" id="zhongcai">
+        <div class="section-header">
+            <h2 class="section-title">
+                重彩·色粉作品
+                <span>Heavy Color & Pastel Works</span>
+            </h2>
+            <p class="section-desc">@wangjianxi</p>
+        </div>
+        
+        <!-- 系列组画《A One And A Two（一一）》 - 4列网格 -->
+        <h3 class="sub-section-title">系列组画《A One And A Two（一一）》</h3>
+        <div class="series-gallery-grid" data-category="zhongcai-yiyi">
+            <div class="series-item" data-index="0" data-gallery='[
+                {"src": "work/heavy-color/series-a-one-and-a-two/系列组画《A One And A Two（一一）》之（Ⅰ）《 The Ray Of Tomorrow（未来之念）》 2026 160x50x2 纸本重彩.jpg", "title": "《A One And A Two（一一）》之（Ⅰ）《The Ray Of Tomorrow（未来之念）》", "meta": "完整图 | 2026 | 160x50x2 | 纸本重彩"},
+                {"src": "work/heavy-color/series-a-one-and-a-two/系列组画《A One And A Two（一一）》之（Ⅰ）《 The Ray Of Tomorrow（未来之念）》 局部一.jpg", "title": "《未来之念》局部一", "meta": "局部图 | 2026 | 纸本重彩"},
+                {"src": "work/heavy-color/series-a-one-and-a-two/系列组画《A One And A Two（一一）》之（Ⅰ）《 The Ray Of Tomorrow（未来之念）》 局部二.jpg", "title": "《未来之念》局部二", "meta": "局部图 | 2026 | 纸本重彩"}
+            ]'>
+                <img src="work/heavy-color/series-a-one-and-a-two/系列组画《A One And A Two（一一）》之（Ⅰ）《 The Ray Of Tomorrow（未来之念）》 2026 160x50x2 纸本重彩.jpg" alt="未来之念">
+                <div class="series-badge">Series Ⅰ</div>
+                <div class="series-info">
+                    <h5>《The Ray Of Tomorrow》</h5>
+                    <p>未来之念 | 2026</p>
+                </div>
+            </div>
+            <div class="series-item" data-index="1" data-gallery='[
+                {"src": "work/heavy-color/series-a-one-and-a-two/系列组画《A One And A Two（一一）》之（Ⅳ）《 The Waves（海浪）》 2026 160x50x2 纸本重彩.jpg", "title": "《A One And A Two（一一）》之（Ⅳ）《The Waves（海浪）》", "meta": "完整图 | 2026 | 160x50x2 | 纸本重彩"},
+                {"src": "work/heavy-color/series-a-one-and-a-two/系列组画《A One And A Two（一一）》之（Ⅳ）《 The Waves（海浪）》一.jpg", "title": "《海浪》分图一", "meta": "分图 | 2026 | 纸本重彩"},
+                {"src": "work/heavy-color/series-a-one-and-a-two/系列组画《A One And A Two（一一）》之（Ⅳ）《 The Waves（海浪）》 二.jpg", "title": "《海浪》分图二", "meta": "分图 | 2026 | 纸本重彩"}
+            ]'>
+                <img src="work/heavy-color/series-a-one-and-a-two/系列组画《A One And A Two（一一）》之（Ⅳ）《 The Waves（海浪）》 2026 160x50x2 纸本重彩.jpg" alt="海浪">
+                <div class="series-badge">Series Ⅳ</div>
+                <div class="series-info">
+                    <h5>《The Waves》</h5>
+                    <p>海浪 | 2026</p>
+                </div>
+            </div>
+            <div class="series-item" data-index="2" data-gallery='[
+                {"src": "work/heavy-color/series-a-one-and-a-two/系列组画《A One And A Two（一一）》之（Ⅴ）《 Hmm（忆）》 2026 160x50x2 纸本重彩.jpg", "title": "《A One And A Two（一一）》之（Ⅴ）《Hmm（忆）》", "meta": "完整图 | 2026 | 160x50x2 | 纸本重彩"},
+                {"src": "work/heavy-color/series-a-one-and-a-two/系列组画《A One And A Two（一一）》之（Ⅴ）《 Hmm（忆）》一.jpg", "title": "《忆》分图一", "meta": "分图 | 2026 | 纸本重彩"},
+                {"src": "work/heavy-color/series-a-one-and-a-two/系列组画《A One And A Two（一一）》之（Ⅴ）《 Hmm（忆）》 二.jpg", "title": "《忆》分图二", "meta": "分图 | 2026 | 纸本重彩"}
+            ]'>
+                <img src="work/heavy-color/series-a-one-and-a-two/系列组画《A One And A Two（一一）》之（Ⅴ）《 Hmm（忆）》 2026 160x50x2 纸本重彩.jpg" alt="忆">
+                <div class="series-badge">Series Ⅴ</div>
+                <div class="series-info">
+                    <h5>《Hmm》</h5>
+                    <p>忆 | 2026</p>
+                </div>
+            </div>
+            <div class="series-item" data-index="3" data-gallery='[
+                {"src": "work/heavy-color/series-a-one-and-a-two/系列组画《A One And A Two（一一）》之（Ⅵ）《 Soaring Song（鹤）》 2026 160x50x2 纸本重彩.jpg", "title": "《A One And A Two（一一）》之（Ⅵ）《Soaring Song（鹤）》", "meta": "完整图 | 2026 | 160x50x2 | 纸本重彩"},
+                {"src": "work/heavy-color/series-a-one-and-a-two/系列组画《A One And A Two（一一）》之（Ⅵ）《 Soaring Song（鹤）》 一.jpg", "title": "《鹤》分图一", "meta": "分图 | 2026 | 纸本重彩"},
+                {"src": "work/heavy-color/series-a-one-and-a-two/系列组画《A One And A Two（一一）》之（Ⅵ）《 Soaring Song（鹤）》二.jpg", "title": "《鹤》分图二", "meta": "分图 | 2026 | 纸本重彩"},
+                {"src": "work/heavy-color/series-a-one-and-a-two/系列组画《A One And A Two（一一）》之（Ⅵ）《 Soaring Song（鹤）》三.jpg", "title": "《鹤》分图三", "meta": "分图 | 2026 | 纸本重彩"}
+            ]'>
+                <img src="work/heavy-color/series-a-one-and-a-two/系列组画《A One And A Two（一一）》之（Ⅵ）《 Soaring Song（鹤）》 2026 160x50x2 纸本重彩.jpg" alt="鹤">
+                <div class="series-badge">Series Ⅵ</div>
+                <div class="series-info">
+                    <h5>《Soaring Song》</h5>
+                    <p>鹤 | 2026</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 《午夜诗》系列 - 交错式大图 -->
+        <h3 class="sub-section-title">《午夜诗》系列作品</h3>
+        <div class="zhongcai-showcase" data-category="zhongcai-wuye">
+            <div class="zhongcai-main-item large" data-index="0">
+                <img src="work/heavy-color/midnight-poems/《匆匆》2025 40x40 卡纸色粉.jpg" alt="匆匆">
+                <div class="zhongcai-overlay">
+                    <h4>《匆匆》</h4>
+                    <p>2025 | 40x40 | 卡纸色粉</p>
+                </div>
+            </div>
+            <div class="zhongcai-main-item" data-index="1">
+                <img src="work/heavy-color/midnight-poems/《夜牧》2025 40x40 卡纸色粉.jpg" alt="夜牧">
+                <div class="zhongcai-overlay">
+                    <h4>《夜牧》</h4>
+                    <p>2025 | 40x40 | 卡纸色粉</p>
+                </div>
+            </div>
+            <div class="zhongcai-main-item" data-index="2">
+                <img src="work/heavy-color/midnight-poems/《浮》2025 35x35 卡纸色粉.jpg" alt="浮">
+                <div class="zhongcai-overlay">
+                    <h4>《浮》</h4>
+                    <p>2025 | 35x35 | 卡纸色粉</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 任朝暮系列 - 2列网格 -->
+        <h3 class="sub-section-title">任朝暮系列作品</h3>
+        <div class="series-gallery-grid" data-category="zhongcai-renzhao">
+            <div class="series-item" data-index="0">
+                <img src="work/heavy-color/renzhao-series/《任朝暮》组画之（一）2025 85x40 纸本重彩.jpg" alt="任朝暮（一）">
+                <div class="series-badge">Ⅰ</div>
+                <div class="series-info">
+                    <h5>《任朝暮》组画之（一）</h5>
+                    <p>2025 | 85x40 | 纸本重彩</p>
+                </div>
+            </div>
+            <div class="series-item" data-index="1">
+                <img src="work/heavy-color/renzhao-series/《任朝暮》组画之（二）2025 85x40 纸本重彩.jpg" alt="任朝暮（二）">
+                <div class="series-badge">Ⅱ</div>
+                <div class="series-info">
+                    <h5>《任朝暮》组画之（二）</h5>
+                    <p>2025 | 85x40 | 纸本重彩</p>
+                </div>
+            </div>
+            <div class="series-item" data-index="2">
+                <img src="work/heavy-color/renzhao-series/《任朝暮》组画之（三）2025 85x40 纸本重彩.jpg" alt="任朝暮（三）">
+                <div class="series-badge">Ⅲ</div>
+                <div class="series-info">
+                    <h5>《任朝暮》组画之（三）</h5>
+                    <p>2025 | 85x40 | 纸本重彩</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 写生作品 -->
+        <h3 class="sub-section-title">写生作品</h3>
+        <div class="series-gallery-grid" data-category="zhongcai-xiesheng">
+            <div class="series-item" data-index="0">
+                <img src="work/heavy-color/sketches/《京都之夜》2024 25x18 卡纸色粉.jpg" alt="京都之夜">
+                <div class="series-info">
+                    <h5>《京都之夜》</h5>
+                    <p>2024 | 25x18 | 卡纸色粉</p>
+                </div>
+            </div>
+            <div class="series-item" data-index="1">
+                <img src="work/heavy-color/sketches/《什刹海之夜》2024 28x18 卡纸色粉.jpg" alt="什刹海之夜">
+                <div class="series-info">
+                    <h5>《什刹海之夜》</h5>
+                    <p>2024 | 28x18 | 卡纸色粉</p>
+                </div>
+            </div>
+            <div class="series-item" data-index="2">
+                <img src="work/heavy-color/sketches/《北京白塔寺》2024 28x20 卡纸色粉.jpg" alt="北京白塔寺">
+                <div class="series-info">
+                    <h5>《北京白塔寺》</h5>
+                    <p>2024 | 28x20 | 卡纸色粉</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 水墨作品 - 形式3：自动横向滚动展示 -->
+    <section class="gallery-section" id="shuimo">
+        <div class="section-header">
+            <h2 class="section-title">
+                水墨作品
+                <span>Ink Wash Painting</span>
+            </h2>
+            <p class="section-desc">自动滚动浏览 | 悬停暂停</p>
+        </div>
+        <div class="shuimo-scroll-container">
+            <div class="shuimo-scroll" data-category="shuimo">
+                <!-- 第一组 -->
+                <div class="shuimo-item" data-index="0">
+                    <span class="shuimo-index">01</span>
+                    <img src="work/ink-painting/水墨人物创作-城市青年.jpg" alt="城市青年">
+                    <div class="shuimo-info">
+                        <h4>水墨人物创作 - 城市青年</h4>
+                        <p>人物创作</p>
+                    </div>
+                </div>
+                <div class="shuimo-item portrait" data-index="1">
+                    <span class="shuimo-index">02</span>
+                    <img src="work/ink-painting/水墨插画创作-守.jpg" alt="守">
+                    <div class="shuimo-info">
+                        <h4>水墨插画创作 - 守</h4>
+                        <p>插画创作</p>
+                    </div>
+                </div>
+                <div class="shuimo-item portrait" data-index="2">
+                    <span class="shuimo-index">03</span>
+                    <img src="work/ink-painting/白描创作-秀场幕后.jpg" alt="秀场幕后">
+                    <div class="shuimo-info">
+                        <h4>白描创作 - 秀场幕后</h4>
+                        <p>白描创作</p>
+                    </div>
+                </div>
+                <div class="shuimo-item portrait" data-index="3">
+                    <span class="shuimo-index">04</span>
+                    <img src="work/ink-painting/水墨小品.jpg" alt="水墨小品">
+                    <div class="shuimo-info">
+                        <h4>水墨小品</h4>
+                        <p>小品</p>
+                    </div>
+                </div>
+                <div class="shuimo-item portrait" data-index="4">
+                    <span class="shuimo-index">05</span>
+                    <img src="work/ink-painting/水墨人像写生1.jpg" alt="水墨人像写生1">
+                    <div class="shuimo-info">
+                        <h4>水墨人像写生 Ⅰ</h4>
+                        <p>人像写生</p>
+                    </div>
+                </div>
+                <div class="shuimo-item portrait" data-index="5">
+                    <span class="shuimo-index">06</span>
+                    <img src="work/ink-painting/水墨人像写生2.jpg" alt="水墨人像写生2">
+                    <div class="shuimo-info">
+                        <h4>水墨人像写生 Ⅱ</h4>
+                        <p>人像写生</p>
+                    </div>
+                </div>
+                <div class="shuimo-item portrait" data-index="6">
+                    <span class="shuimo-index">07</span>
+                    <img src="work/ink-painting/水墨人像写生3.jpg" alt="水墨人像写生3">
+                    <div class="shuimo-info">
+                        <h4>水墨人像写生 Ⅲ</h4>
+                        <p>人像写生</p>
+                    </div>
+                </div>
+                <div class="shuimo-item portrait" data-index="7">
+                    <span class="shuimo-index">08</span>
+                    <img src="work/ink-painting/水墨人像写生4.jpg" alt="水墨人像写生4">
+                    <div class="shuimo-info">
+                        <h4>水墨人像写生 Ⅳ</h4>
+                        <p>人像写生</p>
+                    </div>
+                </div>
+                <div class="shuimo-item portrait" data-index="8">
+                    <span class="shuimo-index">09</span>
+                    <img src="work/ink-painting/水墨人像写生5.jpg" alt="水墨人像写生5">
+                    <div class="shuimo-info">
+                        <h4>水墨人像写生 Ⅴ</h4>
+                        <p>人像写生</p>
+                    </div>
+                </div>
+                <div class="shuimo-item portrait" data-index="9">
+                    <span class="shuimo-index">10</span>
+                    <img src="work/ink-painting/水墨人像写生6.jpg" alt="水墨人像写生6">
+                    <div class="shuimo-info">
+                        <h4>水墨人像写生 Ⅵ</h4>
+                        <p>人像写生</p>
+                    </div>
+                </div>
+                <!-- 复制一组实现无缝滚动 -->
+                <div class="shuimo-item" data-index="0">
+                    <span class="shuimo-index">01</span>
+                    <img src="work/ink-painting/水墨人物创作-城市青年.jpg" alt="城市青年">
+                    <div class="shuimo-info">
+                        <h4>水墨人物创作 - 城市青年</h4>
+                        <p>人物创作</p>
+                    </div>
+                </div>
+                <div class="shuimo-item portrait" data-index="1">
+                    <span class="shuimo-index">02</span>
+                    <img src="work/ink-painting/水墨插画创作-守.jpg" alt="守">
+                    <div class="shuimo-info">
+                        <h4>水墨插画创作 - 守</h4>
+                        <p>插画创作</p>
+                    </div>
+                </div>
+                <div class="shuimo-item portrait" data-index="2">
+                    <span class="shuimo-index">03</span>
+                    <img src="work/ink-painting/白描创作-秀场幕后.jpg" alt="秀场幕后">
+                    <div class="shuimo-info">
+                        <h4>白描创作 - 秀场幕后</h4>
+                        <p>白描创作</p>
+                    </div>
+                </div>
+                <div class="shuimo-item portrait" data-index="3">
+                    <span class="shuimo-index">04</span>
+                    <img src="work/ink-painting/水墨小品.jpg" alt="水墨小品">
+                    <div class="shuimo-info">
+                        <h4>水墨小品</h4>
+                        <p>小品</p>
+                    </div>
+                </div>
+                <div class="shuimo-item portrait" data-index="4">
+                    <span class="shuimo-index">05</span>
+                    <img src="work/ink-painting/水墨人像写生1.jpg" alt="水墨人像写生1">
+                    <div class="shuimo-info">
+                        <h4>水墨人像写生 Ⅰ</h4>
+                        <p>人像写生</p>
+                    </div>
+                </div>
+                <div class="shuimo-item portrait" data-index="5">
+                    <span class="shuimo-index">06</span>
+                    <img src="work/ink-painting/水墨人像写生2.jpg" alt="水墨人像写生2">
+                    <div class="shuimo-info">
+                        <h4>水墨人像写生 Ⅱ</h4>
+                        <p>人像写生</p>
+                    </div>
+                </div>
+                <div class="shuimo-item portrait" data-index="6">
+                    <span class="shuimo-index">07</span>
+                    <img src="work/ink-painting/水墨人像写生3.jpg" alt="水墨人像写生3">
+                    <div class="shuimo-info">
+                        <h4>水墨人像写生 Ⅲ</h4>
+                        <p>人像写生</p>
+                    </div>
+                </div>
+                <div class="shuimo-item portrait" data-index="7">
+                    <span class="shuimo-index">08</span>
+                    <img src="work/ink-painting/水墨人像写生4.jpg" alt="水墨人像写生4">
+                    <div class="shuimo-info">
+                        <h4>水墨人像写生 Ⅳ</h4>
+                        <p>人像写生</p>
+                    </div>
+                </div>
+                <div class="shuimo-item portrait" data-index="8">
+                    <span class="shuimo-index">09</span>
+                    <img src="work/ink-painting/水墨人像写生5.jpg" alt="水墨人像写生5">
+                    <div class="shuimo-info">
+                        <h4>水墨人像写生 Ⅴ</h4>
+                        <p>人像写生</p>
+                    </div>
+                </div>
+                <div class="shuimo-item portrait" data-index="9">
+                    <span class="shuimo-index">10</span>
+                    <img src="work/ink-painting/水墨人像写生6.jpg" alt="水墨人像写生6">
+                    <div class="shuimo-info">
+                        <h4>水墨人像写生 Ⅵ</h4>
+                        <p>人像写生</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品草稿 - 形式4：分类瀑布流展示 -->
+    <section class="gallery-section" id="caogao">
+        <div class="section-header">
+            <h2 class="section-title">
+                作品草稿
+                <span>Sketches & Drafts</span>
+            </h2>
+            <p class="section-desc">独立创作项目</p>
+        </div>
+        
+        <!-- 分类标签 -->
+        <div class="caogao-tabs">
+            <div class="caogao-tab active" data-filter="all">全部</div>
+            <div class="caogao-tab" data-filter="gongbi">工笔</div>
+            <div class="caogao-tab" data-filter="baimiao">白描</div>
+            <div class="caogao-tab" data-filter="series">组画</div>
+        </div>
+        
+        <!-- 瀑布流网格 -->
+        <div class="caogao-waterfall" data-category="caogao">
+            <!-- 工笔类 -->
+            <div class="caogao-card" data-type="gongbi" data-index="0">
+                <div class="caogao-card-image">
+                    <img src="work/sketches/工笔《汉韵》草稿.jpg" alt="汉韵草稿">
+                    <span class="caogao-type-tag">工笔</span>
+                    <div class="caogao-card-overlay">
+                        <h4 class="caogao-card-title">工笔《汉韵》草稿</h4>
+                        <p class="caogao-card-desc">传统题材的现代演绎</p>
+                        <div class="caogao-card-meta">点击查看大图</div>
+                    </div>
+                </div>
+                <div class="caogao-card-info">
+                    <h4>工笔《汉韵》草稿</h4>
+                    <p>传统题材的现代演绎</p>
+                </div>
+            </div>
+            
+            <div class="caogao-card" data-type="gongbi" data-index="1">
+                <div class="caogao-card-image">
+                    <img src="work/sketches/工笔《轻奏青春》草稿.jpg" alt="轻奏青春草稿">
+                    <span class="caogao-type-tag">工笔</span>
+                    <div class="caogao-card-overlay">
+                        <h4 class="caogao-card-title">工笔《轻奏青春》草稿</h4>
+                        <p class="caogao-card-desc">青春主题创作</p>
+                        <div class="caogao-card-meta">点击查看大图</div>
+                    </div>
+                </div>
+                <div class="caogao-card-info">
+                    <h4>工笔《轻奏青春》草稿</h4>
+                    <p>青春主题创作</p>
+                </div>
+            </div>
+            
+            <!-- 白描类 -->
+            <div class="caogao-card" data-type="baimiao" data-index="2">
+                <div class="caogao-card-image">
+                    <img src="work/sketches/白描《秀场幕后》草稿.jpg" alt="秀场幕后草稿">
+                    <span class="caogao-type-tag">白描</span>
+                    <div class="caogao-card-overlay">
+                        <h4 class="caogao-card-title">白描《秀场幕后》草稿</h4>
+                        <p class="caogao-card-desc">时尚与传统结合</p>
+                        <div class="caogao-card-meta">点击查看大图</div>
+                    </div>
+                </div>
+                <div class="caogao-card-info">
+                    <h4>白描《秀场幕后》草稿</h4>
+                    <p>时尚与传统结合</p>
+                </div>
+            </div>
+            
+            <!-- 组画类 -->
+            <div class="caogao-card" data-type="series" data-index="3">
+                <div class="caogao-card-image">
+                    <img src="work/sketches/系列组画《春风》之Ⅰ草稿.jpg" alt="春风之Ⅰ草稿">
+                    <span class="caogao-type-tag">组画</span>
+                    <div class="caogao-card-overlay">
+                        <h4 class="caogao-card-title">《春风》之Ⅰ草稿</h4>
+                        <p class="caogao-card-desc">系列创作开篇</p>
+                        <div class="caogao-card-meta">点击查看大图</div>
+                    </div>
+                </div>
+                <div class="caogao-card-info">
+                    <h4>《春风》之Ⅰ草稿</h4>
+                    <p>系列创作开篇</p>
+                </div>
+            </div>
+            
+            <div class="caogao-card" data-type="series" data-index="4">
+                <div class="caogao-card-image">
+                    <img src="work/sketches/系列组画《春风》之Ⅱ草稿.jpg" alt="春风之Ⅱ草稿">
+                    <span class="caogao-type-tag">组画</span>
+                    <div class="caogao-card-overlay">
+                        <h4 class="caogao-card-title">《春风》之Ⅱ草稿</h4>
+                        <p class="caogao-card-desc">系列创作之二</p>
+                        <div class="caogao-card-meta">点击查看大图</div>
+                    </div>
+                </div>
+                <div class="caogao-card-info">
+                    <h4>《春风》之Ⅱ草稿</h4>
+                    <p>系列创作之二</p>
+                </div>
+            </div>
+            
+            <div class="caogao-card" data-type="series" data-index="5">
+                <div class="caogao-card-image">
+                    <img src="work/sketches/系列组画《春风》之Ⅲ草稿.jpg" alt="春风之Ⅲ草稿">
+                    <span class="caogao-type-tag">组画</span>
+                    <div class="caogao-card-overlay">
+                        <h4 class="caogao-card-title">《春风》之Ⅲ草稿</h4>
+                        <p class="caogao-card-desc">系列创作之三</p>
+                        <div class="caogao-card-meta">点击查看大图</div>
+                    </div>
+                </div>
+                <div class="caogao-card-info">
+                    <h4>《春风》之Ⅲ草稿</h4>
+                    <p>系列创作之三</p>
+                </div>
+            </div>
+            
+            <div class="caogao-card" data-type="series" data-index="6">
+                <div class="caogao-card-image">
+                    <img src="work/sketches/系列组画《春风》之Ⅳ草稿.jpg" alt="春风之Ⅳ草稿">
+                    <span class="caogao-type-tag">组画</span>
+                    <div class="caogao-card-overlay">
+                        <h4 class="caogao-card-title">《春风》之Ⅳ草稿</h4>
+                        <p class="caogao-card-desc">系列创作之四</p>
+                        <div class="caogao-card-meta">点击查看大图</div>
+                    </div>
+                </div>
+                <div class="caogao-card-info">
+                    <h4>《春风》之Ⅳ草稿</h4>
+                    <p>系列创作之四</p>
+                </div>
+            </div>
+            
+            <div class="caogao-card" data-type="series" data-index="7">
+                <div class="caogao-card-image">
+                    <img src="work/sketches/系列组画《春风》之Ⅴ草稿.jpg" alt="春风之Ⅴ草稿">
+                    <span class="caogao-type-tag">组画</span>
+                    <div class="caogao-card-overlay">
+                        <h4 class="caogao-card-title">《春风》之Ⅴ草稿</h4>
+                        <p class="caogao-card-desc">系列创作之五</p>
+                        <div class="caogao-card-meta">点击查看大图</div>
+                    </div>
+                </div>
+                <div class="caogao-card-info">
+                    <h4>《春风》之Ⅴ草稿</h4>
+                    <p>系列创作之五</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 摄影作品 - 形式5：全出血大图展示 -->
+    <section class="gallery-section" id="sheying">
+        <div class="section-header">
+            <h2 class="section-title">
+                摄影作品
+                <span>Photography</span>
+            </h2>
+            <p class="section-desc">@wangjianxi</p>
+        </div>
+        <div class="sheying-showcase" data-category="sheying">
+            <div class="sheying-main" data-index="0">
+                <img src="work/photography/骤雨黄昏.jpg" alt="骤雨黄昏">
+                <div class="sheying-info">
+                    <h3>骤雨黄昏</h3>
+                    <p>Photography / 2024</p>
+                </div>
+            </div>
+            <div class="sheying-side">
+                <div class="sheying-side-item" data-index="1">
+                    <img src="work/photography/和合.jpg" alt="和合">
+                    <div class="sheying-side-info">
+                        <h4>和合</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 海报设计 - 形式6：网格 masonry -->
+    <section class="gallery-section" id="haibao">
+        <div class="section-header">
+            <h2 class="section-title">
+                海报设计
+                <span>Poster Design</span>
+            </h2>
+            <p class="section-desc">视觉传达设计</p>
+        </div>
+        <div class="haibao-grid" data-category="haibao">
+            <div class="haibao-item" data-index="0">
+                <img src="work/posters/形色解析课程作业展海报.png" alt="形色解析课程作业展海报">
+                <div class="haibao-overlay">
+                    <h4>形色解析课程作业展海报</h4>
+                    <p>展览海报设计</p>
+                </div>
+            </div>
+            <div class="haibao-item" data-index="1">
+                <img src="work/posters/形色解析课程作业展邀请函详情页.png" alt="形色解析课程作业展邀请函详情页">
+                <div class="haibao-overlay">
+                    <h4>形色解析课程作业展邀请函</h4>
+                    <p>邀请函设计</p>
+                </div>
+            </div>
+            <div class="haibao-item" data-index="2">
+                <img src="work/posters/拼贴海报-消费主义.jpg" alt="拼贴海报-消费主义">
+                <div class="haibao-overlay">
+                    <h4>拼贴海报 - 消费主义</h4>
+                    <p>主题海报设计</p>
+                </div>
+            </div>
+            <div class="haibao-item" data-index="3">
+                <img src="work/posters/服纹创绘展览海报.jpg" alt="服纹创绘展览海报">
+                <div class="haibao-overlay">
+                    <h4>服纹创绘展览海报</h4>
+                    <p>展览海报设计</p>
+                </div>
+            </div>
+            <div class="haibao-item" data-index="4">
+                <img src="work/posters/重彩与服纹工作坊海报.png" alt="重彩与服纹工作坊海报">
+                <div class="haibao-overlay">
+                    <h4>重彩与服纹工作坊海报</h4>
+                    <p>工作坊海报</p>
+                </div>
+            </div>
+            <div class="haibao-item" data-index="5">
+                <img src="work/posters/重彩工作坊海报.jpg" alt="重彩工作坊海报">
+                <div class="haibao-overlay">
+                    <h4>重彩工作坊海报</h4>
+                    <p>工作坊海报</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 其他作品 - 形式7：卡片列表 -->
+    <section class="gallery-section" id="qita">
+        <div class="section-header">
+            <h2 class="section-title">
+                其他作品
+                <span>Other Works</span>
+            </h2>
+            <p class="section-desc">@wangjianxi</p>
+        </div>
+        <div class="qita-list" data-category="qita">
+            <div class="qita-item" data-index="0">
+                <div class="qita-image">
+                    <img src="work/others/骤雨黄昏.jpg" alt="骤雨黄昏">
+                </div>
+                <div class="qita-content">
+                    <div class="qita-number">01</div>
+                    <h3>骤雨黄昏</h3>
+                    <p>其他创作作品，探索不同媒介的艺术表达</p>
+                </div>
+            </div>
+            <div class="qita-item" data-index="1">
+                <div class="qita-image">
+                    <img src="work/others/和合.jpg" alt="和合">
+                </div>
+                <div class="qita-content">
+                    <div class="qita-number">02</div>
+                    <h3>和合</h3>
+                    <p>其他创作作品，融合传统与现代的艺术探索</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer id="contact">
+        <h2>WORK WITH ME!</h2>
+        <p style="color: #666; font-size: 14px; margin-bottom: 30px;">期待加入贵公司</p>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <h4>邮箱</h4>
+                <p>wongginhei@outlook.com</p>
+            </div>
+            <div class="contact-item">
+                <h4>电话</h4>
+                <p>+86 152 1735 3803</p>
+            </div>
+            <div class="contact-item">
+                <h4>地址</h4>
+                <p>北京市朝阳区太阳宫芍药居甲1号<br>北京服装学院（芍药居校区）</p>
+            </div>
+        </div>
+        
+        <div class="social">
+            <p>@wangjianxi | wongginhei@outlook.com</p>
+            <p style="margin-top: 20px; font-size: 11px; color: #333;">© 2025 王健希 Wang Jianxi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 大图预览模态框 -->
+    <div class="modal" id="imageModal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <span class="modal-nav modal-prev" onclick="changeImage(-1)">&#10094;</span>
+        <span class="modal-nav modal-next" onclick="changeImage(1)">&#10095;</span>
+        <div class="modal-inner">
+            <div class="modal-content">
+                <div class="modal-image-wrapper">
+                    <img id="modalImage" src="" alt="">
+                </div>
+                <div class="modal-info">
+                    <h3 id="modalTitle"></h3>
+                    <p id="modalMeta"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 图片浏览功能
+        let currentGallery = [];
+        let currentGalleryIndex = 0;
+        let browseMode = 'single';
+        let categoryGalleries = {};
+
+        // 收集所有作品数据
+        function collectImages() {
+            const galleries = document.querySelectorAll('[data-category]');
+            galleries.forEach(grid => {
+                const category = grid.dataset.category;
+                // 跳过系列组画分类，它们使用独立的画廊模式
+                if (category === 'zhongcai-yiyi') return;
+                
+                const items = grid.querySelectorAll('[data-index]');
+                if (!categoryGalleries[category]) {
+                    categoryGalleries[category] = [];
+                }
+                
+                items.forEach((item) => {
+                    const img = item.querySelector('img');
+                    const titleEl = item.querySelector('h4, h5, h3') || item.querySelector('.series-info h5') || item.querySelector('.shuimo-info h4');
+                    const metaEl = item.querySelector('p') || item.querySelector('.series-info p');
+                    
+                    const title = titleEl ? titleEl.textContent : '';
+                    const meta = metaEl ? metaEl.textContent : '';
+                    
+                    if (img) {
+                        categoryGalleries[category].push({
+                            src: img.src,
+                            title: title,
+                            meta: meta,
+                            element: item
+                        });
+                    }
+                });
+            });
+            
+            // 为所有作品项添加点击事件
+            const allItems = document.querySelectorAll('[data-index]');
+            allItems.forEach((item) => {
+                item.addEventListener('click', () => {
+                    const galleryData = item.dataset.gallery;
+                    const parentCategory = item.closest('[data-category]');
+                    const category = parentCategory ? parentCategory.dataset.category : '';
+                    
+                    if (galleryData) {
+                        // 系列组画模式：只在当前作品的完整图+分图/局部图之间浏览
+                        browseMode = 'gallery';
+                        currentGallery = JSON.parse(galleryData);
+                        currentGalleryIndex = 0;
+                    } else if (categoryGalleries[category]) {
+                        // 跨作品浏览模式：可以浏览整个分类的所有作品
+                        browseMode = 'cross';
+                        currentGallery = categoryGalleries[category];
+                        const img = item.querySelector('img');
+                        currentGalleryIndex = currentGallery.findIndex(g => g.src === img.src);
+                        if (currentGalleryIndex === -1) currentGalleryIndex = 0;
+                    } else {
+                        // 单图模式
+                        browseMode = 'single';
+                        const img = item.querySelector('img');
+                        const titleEl = item.querySelector('h4, h5, h3');
+                        const metaEl = item.querySelector('p');
+                        currentGallery = [{
+                            src: img.src,
+                            title: titleEl ? titleEl.textContent : '',
+                            meta: metaEl ? metaEl.textContent : ''
+                        }];
+                        currentGalleryIndex = 0;
+                    }
+                    openModal();
+                });
+            });
+        }
+
+        function openModal() {
+            updateModalContent();
+            document.getElementById('imageModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            setTimeout(() => {
+                currentGallery = [];
+                currentGalleryIndex = 0;
+                browseMode = 'single';
+            }, 300);
+        }
+
+        function updateModalContent() {
+            if (currentGallery && currentGallery[currentGalleryIndex]) {
+                const image = currentGallery[currentGalleryIndex];
+                const imgElement = document.getElementById('modalImage');
+                imgElement.src = image.src;
+                imgElement.alt = image.title;
+                document.getElementById('modalTitle').textContent = image.title;
+                
+                let metaText = image.meta;
+                if (browseMode === 'gallery' && currentGallery.length > 1) {
+                    metaText = `${image.meta} (${currentGalleryIndex + 1}/${currentGallery.length})`;
+                } else if (browseMode === 'cross' && currentGallery.length > 1) {
+                    metaText = `${image.meta} [${currentGalleryIndex + 1}/${currentGallery.length}]`;
+                }
+                document.getElementById('modalMeta').textContent = metaText;
+            }
+        }
+
+        function changeImage(direction) {
+            if (!currentGallery || currentGallery.length <= 1) return;
+            
+            currentGalleryIndex += direction;
+            
+            if (currentGalleryIndex < 0) currentGalleryIndex = currentGallery.length - 1;
+            if (currentGalleryIndex >= currentGallery.length) currentGalleryIndex = 0;
+            
+            updateModalContent();
+        }
+
+        // 键盘导航
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('imageModal').classList.contains('active')) {
+                if (e.key === 'Escape') closeModal();
+                if (e.key === 'ArrowLeft') changeImage(-1);
+                if (e.key === 'ArrowRight') changeImage(1);
+            }
+        });
+
+        // 点击模态框背景关闭
+        document.getElementById('imageModal').addEventListener('click', (e) => {
+            if (e.target.id === 'imageModal') closeModal();
+        });
+
+        // 作品草稿标签筛选功能
+        function initCaogaoFilter() {
+            const tabs = document.querySelectorAll('.caogao-tab');
+            const cards = document.querySelectorAll('.caogao-card');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // 切换标签状态
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    const filter = tab.dataset.filter;
+                    
+                    // 筛选卡片
+                    cards.forEach(card => {
+                        if (filter === 'all' || card.dataset.type === filter) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            collectImages();
+            initCaogaoFilter();
+        });
+    </script>
+
+</body>
+</html>
