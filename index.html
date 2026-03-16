@@ -961,6 +961,7 @@
             align-items: center;
             padding: 60px 80px;
             overflow: auto;
+            -webkit-overflow-scrolling: touch; /* 平滑滚动 */
         }
         
         .modal.active {
@@ -1132,6 +1133,26 @@
             color: #444;
         }
         
+        /* 图片懒加载占位 */
+        img[loading="lazy"] {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        img[loading="lazy"].loaded,
+        img[loading="lazy"][src] {
+            opacity: 1;
+        }
+        
+        /* 触摸设备优化 */
+        .shuimo-item,
+        .caogao-card,
+        .series-item,
+        .zhongcai-main-item {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        
         /* ===== 响应式 ===== */
         @media (max-width: 1024px) {
             .profile-section {
@@ -1224,19 +1245,32 @@
                 aspect-ratio: 1/1; /* 正方形适配 */
             }
             
+            /* 水墨作品移动端优化 */
+            .shuimo-scroll-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scroll-snap-type: x mandatory;
+            }
+            
             .shuimo-scroll {
+                animation: none; /* 移动端禁用自动滚动 */
                 padding: 20px;
             }
             
             .shuimo-item,
             .shuimo-item.portrait {
                 max-width: 85vw;
+                scroll-snap-align: center;
+                flex-shrink: 0;
             }
             
             .shuimo-item img {
                 max-height: 350px;
+                width: auto;
+                max-width: 100%;
             }
             
+            /* 作品草稿移动端优化 */
             .caogao-waterfall {
                 column-count: 2;
                 column-gap: 15px;
@@ -1244,10 +1278,34 @@
             
             .caogao-card {
                 margin-bottom: 15px;
+                break-inside: avoid;
+            }
+            
+            .caogao-card-image img {
+                width: 100%;
+                height: auto;
+            }
+            
+            /* 移动端显示卡片信息（非悬浮） */
+            .caogao-card-overlay {
+                display: none !important;
+            }
+            
+            .caogao-card-info {
+                padding: 12px;
+            }
+            
+            .caogao-card-info h4 {
+                font-size: 13px;
+            }
+            
+            .caogao-card-info p {
+                font-size: 11px;
             }
             
             .caogao-tabs {
                 gap: 10px;
+                justify-content: center;
             }
             
             .caogao-tab {
@@ -1279,14 +1337,72 @@
                 font-size: 11px;
             }
             
+            /* 移动端灯箱优化 */
             .modal {
-                padding: 20px;
+                padding: 60px 10px 80px;
+            }
+            
+            .modal-content {
+                max-width: 100vw;
+                max-height: calc(100vh - 140px);
+            }
+            
+            .modal-image-wrapper {
+                max-width: 100vw;
+                max-height: calc(100vh - 180px);
+                padding: 10px;
+            }
+            
+            .modal-content img {
+                max-width: 100%;
+                max-height: calc(100vh - 200px);
             }
             
             .modal-nav {
+                font-size: 18px;
+                width: 44px;
+                height: 44px;
+                top: auto;
+                bottom: 15px;
+                transform: none;
+                background: rgba(0,0,0,0.6);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .modal-prev {
+                left: 50%;
+                transform: translateX(-55px);
+            }
+            
+            .modal-next {
+                right: 50%;
+                transform: translateX(55px);
+            }
+            
+            .modal-close {
+                top: 10px;
+                right: 10px;
+                width: 44px;
+                height: 44px;
                 font-size: 24px;
-                width: 45px;
-                height: 45px;
+                background: rgba(0,0,0,0.6);
+            }
+            
+            .modal-info {
+                padding: 0 15px;
+                margin-top: 15px;
+            }
+            
+            .modal-info h3 {
+                font-size: 15px;
+                line-height: 1.4;
+            }
+            
+            .modal-info p {
+                font-size: 12px;
             }
             
             .sheying-side {
@@ -2252,6 +2368,39 @@
         let currentGalleryIndex = 0;
         let browseMode = 'single';
         let categoryGalleries = {};
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        // 懒加载图片
+        function setupLazyLoading() {
+            const images = document.querySelectorAll('img');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.loading = 'eager';
+                            img.classList.add('loaded');
+                            observer.unobserve(img);
+                        }
+                    });
+                }, {
+                    rootMargin: '50px 0px',
+                    threshold: 0.01
+                });
+                
+                images.forEach(img => {
+                    if (!img.loading) img.loading = 'lazy';
+                    imageObserver.observe(img);
+                });
+            } else {
+                // 回退：直接加载所有图片
+                images.forEach(img => {
+                    img.loading = 'eager';
+                });
+            }
+        }
 
         // 收集所有作品数据
         function collectImages() {
@@ -2288,6 +2437,18 @@
             // 为所有作品项添加点击事件
             const allItems = document.querySelectorAll('[data-index]');
             allItems.forEach((item) => {
+                // 移动端触摸优化
+                item.style.cursor = 'pointer';
+                
+                // 触摸反馈
+                item.addEventListener('touchstart', function() {
+                    this.style.opacity = '0.8';
+                }, {passive: true});
+                
+                item.addEventListener('touchend', function() {
+                    this.style.opacity = '1';
+                }, {passive: true});
+                
                 item.addEventListener('click', () => {
                     const galleryData = item.dataset.gallery;
                     const parentCategory = item.closest('[data-category]');
@@ -2327,11 +2488,47 @@
             updateModalContent();
             document.getElementById('imageModal').classList.add('active');
             document.body.style.overflow = 'hidden';
+            
+            // 添加触摸滑动支持
+            const modal = document.getElementById('imageModal');
+            modal.addEventListener('touchstart', handleTouchStart, {passive: true});
+            modal.addEventListener('touchend', handleTouchEnd, {passive: true});
+        }
+        
+        // 触摸事件处理
+        function handleTouchStart(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }
+        
+        function handleTouchEnd(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // 向左滑动 - 下一张
+                    changeImage(1);
+                } else {
+                    // 向右滑动 - 上一张
+                    changeImage(-1);
+                }
+            }
         }
 
         function closeModal() {
-            document.getElementById('imageModal').classList.remove('active');
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
             document.body.style.overflow = 'auto';
+            
+            // 移除触摸事件监听器
+            modal.removeEventListener('touchstart', handleTouchStart);
+            modal.removeEventListener('touchend', handleTouchEnd);
+            
             setTimeout(() => {
                 currentGallery = [];
                 currentGalleryIndex = 0;
@@ -2417,6 +2614,7 @@
 
         // 初始化
         document.addEventListener('DOMContentLoaded', () => {
+            setupLazyLoading();
             collectImages();
             initCaogaoFilter();
         });
